@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+   {% block title %}Редактировать задачу{% endblock %}
+   {% block content %}
+       <h1 class="text-2xl font-bold text-gray-800 text-center mb-6">Редактировать задачу</h1>
+       <form method="post" class="bg-white p-6 rounded-lg shadow-md">
+           {% csrf_token %}
+           <div class="mb-4">
+               <label for="{{ form.title.id_for_label }}" class="block text-gray-700 font-medium mb-2">Название</label>
+               {{ form.title|add_class:"w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500" }}
+           </div>
+           <div class="mb-4">
+               <label for="{{ form.description.id_for_label }}" class="block text-gray-700 font-medium mb-2">Описание</label>
+               {{ form.description|add_class:"w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500" }}
+           </div>
+           <div class="flex space-x-4">
+               <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">Сохранить</button>
+               <a href="{% url 'task_list' %}" class="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600 transition">Отмена</a>
+           </div>
+       </form>
+   {% endblock %}

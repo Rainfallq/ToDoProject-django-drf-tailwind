@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% if object %} Edit {% else %} Add new {% endif %} task</title>
+</head>
+<body>
+    <h1>{% if object %} Edit {% else %} Add new {% endif %} task</h1>
+    <p>User: {{ user.username }} | <a href="{% url 'logout' %}" >Log out</a></p>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Save</button>
+    </form>
+    <a href="{% url 'task_list' %}">Back</a>
+</body>
+</html>
